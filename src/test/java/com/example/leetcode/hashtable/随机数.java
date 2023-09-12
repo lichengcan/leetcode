@@ -48,7 +48,7 @@ public class 随机数 {
             int num = 3;
 
             List<Integer> selectedIds = selectRandomIds(idList, num);
-            System.out.println("Randomly selected IDs:");
+               System.out.println("Randomly selected IDs:");
             for (Integer id : selectedIds) {
                 System.out.println(id);
             }
