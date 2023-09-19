@@ -20,11 +20,11 @@ public class 删除有序数组中的重复项 {
         //如果right++后 = length，也要进行步骤3
         int left = 0, right = left + 1;
         while (right < nums.length) {
-            if (nums[left] == nums[right]) {
-                right++;
-            }else {
+            if (nums[left] != nums[right]) {
                 nums[left+1]=nums[right];
                 left++;
+            }else {
+                right++;
             }
         }
         //为啥要+1 ，因为是返回长度，left是数组下标
