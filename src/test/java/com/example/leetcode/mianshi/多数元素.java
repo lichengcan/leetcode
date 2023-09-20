@@ -1,4 +1,4 @@
-package com.example.leetcode.mians;
+package com.example.leetcode.mianshi;
 
 import java.util.HashMap;
 import java.util.Map;
