@@ -157,4 +157,8 @@ public class AAA1200 {
     }
 
 
+    public int countSeniors(String[] details) {
+
+    }
+
 }
