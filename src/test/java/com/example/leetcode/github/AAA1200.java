@@ -1,9 +1,6 @@
 package com.example.leetcode.github;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author: lichengcan
@@ -118,7 +115,7 @@ public class AAA1200 {
         test.sumEvenAfterQueries(nums, queries);
     }
 
-    //查询后的偶数和
+    //80 查询后的偶数和
     public int[] sumEvenAfterQueries(int[] nums, int[][] queries) {
         final int length = queries.length;
 
@@ -129,15 +126,35 @@ public class AAA1200 {
             int val = queries[i][0];
             int index = queries[i][1];
             //如果原值是偶 删
-            if (nums[index]%2==0) tempSum-=nums[index];
+            if (nums[index] % 2 == 0) tempSum -= nums[index];
             nums[index] += val;
             //更改后是偶数 加
-            if(nums[index]%2==0) tempSum+=nums[index];
+            if (nums[index] % 2 == 0) tempSum += nums[index];
             sums[i] = tempSum;
         }
         return sums;
     }
 
+    //81 最小绝对差
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        Arrays.sort(arr);
+        List<List<Integer>> res = new ArrayList<>();
+        int cha = arr[1] - arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            List<Integer> list = new ArrayList<>();
+            list.add(arr[i]);
+            list.add(arr[i + 1]);
+            int tem = arr[i + 1] - arr[i];
+            if (tem < cha) {
+                cha = tem;
+                res.clear();
+            }
+            if (tem == cha) {
+                res.add(list);
+            }
+        }
+        return res;
+    }
 
 
 }
