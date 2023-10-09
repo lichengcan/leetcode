@@ -157,8 +157,16 @@ public class AAA1200 {
     }
 
 
-    public int countSeniors(String[] details) {
 
+    public int countSeniors(String[] details) {
+        int res = 0;
+        for (String detail : details) {
+            Integer substring = Integer.valueOf(detail.substring(11, 13));
+            if (substring > 60) {
+                res++;
+            }
+        }
+        return res;
     }
 
 }
