@@ -113,6 +113,19 @@ public class AAA1200 {
         int[] nums = new int[]{1, 2, 3, 4};
         int[][] queries = new int[][]{{1, 0}, {-3, 1}, {-4, 0}, {2, 3}};
         test.sumEvenAfterQueries(nums, queries);
+
+        String data = "2019-02-09";
+        test.dayOfYear(data);
+
+        String word = "abcdefd";
+        char ch = 'd';
+        test.reversePrefix(word, ch);
+
+        int[][] ints = new int[][]{{2, 0, 0, 1}, {0, 3, 1, 0}, {0, 5, 2, 0}, {4, 0, 0, 2}};
+        System.out.println("test.checkXMatrix(ints) = " + test.checkXMatrix(ints));
+
+        int[] salary = new int[]{4000, 3000, 1000, 2000};
+        System.out.println(test.average(salary));
     }
 
     //80 查询后的偶数和
@@ -157,7 +170,7 @@ public class AAA1200 {
     }
 
 
-
+    //82
     public int countSeniors(String[] details) {
         int res = 0;
         for (String detail : details) {
@@ -169,4 +182,66 @@ public class AAA1200 {
         return res;
     }
 
+
+    public int dayOfYear(String date) {
+        int[] nums = new int[]{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        Integer substring1 = Integer.valueOf(date.substring(5, 7));
+        String substring2 = date.substring(8, 10);
+        Integer integer1 = Integer.valueOf(date.substring(0, 4));
+
+        int res = 0;
+        for (Integer integer = 1; integer < substring1; integer++) {
+            res += nums[integer];
+        }
+        if ((integer1 % 400 == 0 || (integer1 % 4 == 0 && integer1 % 100 != 0)) && substring1 > 2) {
+            res++;
+        }
+        return res + Integer.valueOf(substring2);
+    }
+
+    //86 反转单词前缀
+    public String reversePrefix(String word, char ch) {
+        int i = word.indexOf(ch);
+        final int length = word.length();
+        String pre = word.substring(0, i + 1);
+        String end = word.substring(i + 1, length);
+        final char[] chars = pre.toCharArray();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i1 = chars.length - 1; i1 >= 0; i1--) {
+            sb.append(chars[i1]);
+        }
+        return sb + end;
+    }
+
+    // 88 判断矩阵是否是一个 X 矩阵
+    public boolean checkXMatrix(int[][] grid) {
+        //主要是怎么找到对角线上的数据
+        //i==j : \
+        //i+j==n-1 /
+        final int length = grid.length;//行
+        //矩阵遍历
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                if (i == j || ((i + j) == (length - 1))) {
+                    if (grid[i][j] == 0) {
+                        return false;
+                    }
+                } else if (grid[i][j] != 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public double average(int[] salary) {
+        Arrays.sort(salary);
+        int sum = 0;
+        int length = salary.length;
+        for (int i = 1; i < length - 1; i++) {
+            sum += salary[i];
+        }
+        return Double.valueOf(sum) / (length - 2);
+    }
 }
