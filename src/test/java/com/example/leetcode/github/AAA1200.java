@@ -126,6 +126,9 @@ public class AAA1200 {
 
         int[] salary = new int[]{4000, 3000, 1000, 2000};
         System.out.println(test.average(salary));
+
+        int[][] ints1 = new int[][]{{1,2}};
+
     }
 
     //80 查询后的偶数和
@@ -244,4 +247,36 @@ public class AAA1200 {
         }
         return Double.valueOf(sum) / (length - 2);
     }
+
+
+//   997 找到小镇的法官
+//小镇里有 n 个人，按从 1 到 n 的顺序编号。传言称，这些人中有一个暗地里是小镇法官。
+//
+//如果小镇法官真的存在，那么：
+//
+//小镇法官不会信任任何人。
+//每个人（除了小镇法官）都信任这位小镇法官。
+//只有一个人同时满足属性 1 和属性 2 。...
+    public static int findJudge(int n, int[][] trust) {
+        int[] ru = new int[n+1];
+        int[] chu = new int[n+1];
+
+        for (int[] ints : trust) {
+            //统计被信任的人
+            final int a = ints[0];//当前人
+            final int b = ints[1];//相信人
+            ru[b]++;
+            chu[a]++;
+        }
+
+        for (int j = 1; j <=n ; j++) {
+            //当前被信任的票数=n-1 且这个人 不相信任何人
+            if(ru[j]==n-1&&chu[j]==0){
+                return j;
+            }
+        }
+        return -1;
+    }
+
+
 }
