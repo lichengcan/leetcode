@@ -9,13 +9,10 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] array = {64, 12, 34, 25, 12, 22, 11, 90, 111, 2, 7, 1, 88, 33};
-        int[] array2 = {64, 12, 34, 25, 12, 22, 11, 90, 111, 2, 7, 1, 88, 33};
-        System.out.println("原始数组：");
         for (int anInt : array) {
             System.out.print(" " + anInt);
         }
         int[] ints = quickSort(array, 0, array.length - 1);
-
 
         System.out.println("\n排序后的数组：");
         for (int anInt : ints) {
