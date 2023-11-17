@@ -278,5 +278,8 @@ public class AAA1200 {
         return -1;
     }
 
+    public int[] twoSum(int[] nums, int target) {
+        return null;
+    }
 
 }
