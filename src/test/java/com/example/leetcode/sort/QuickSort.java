@@ -8,7 +8,8 @@ package com.example.leetcode.sort;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] array = {64, 12, 34, 25, 12, 22, 11, 90, 111, 2, 7, 1, 88, 33};
+//        int[] array = {64, 12, 34, 25, 12, 22, 11, 90, 111, 2, 7, 1, 88, 33};
+        int[] array = {5,1,2,4,6,8,9,3};
         for (int anInt : array) {
             System.out.print(" " + anInt);
         }
