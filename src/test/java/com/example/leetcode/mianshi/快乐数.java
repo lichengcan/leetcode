@@ -43,7 +43,19 @@ public class 快乐数 {
         return nextNum;
     }
 
+    //快慢指针法
+    public static boolean isHappy1(int n) {
+        int slow = n;
+        int fast = nextNum(n);
+        while (fast != 1 && slow!=fast){
+            slow = nextNum(slow);
+            fast = nextNum(nextNum(fast));
+        }
+        return fast == 1;
+    }
+
     public static void main(String[] args) {
         System.out.println(isHappy(2));
+        System.out.println(isHappy1(2));
     }
 }
