@@ -44,6 +44,24 @@ public class 除自身以外数组的乘积 {
         return ans;
     }
 
+    public static int[] productExceptSelfV1(int[] nums) {
+        int length = nums.length;
+        int[] l = new int[length];
+        l[0] = 1;
+
+        for (int i = 1; i < length; i++) {
+            l[i]=nums[i-1]*l[i-1];
+        }
+
+        int sum = 1;
+        for (int i = length-1; i >=0; i--) {
+            l[i] = sum*l[i];
+            sum*=nums[i];
+        }
+        return l;
+    }
+
+
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,3,4};
         System.out.println(productExceptSelf(nums));
